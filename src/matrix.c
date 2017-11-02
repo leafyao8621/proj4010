@@ -25,9 +25,23 @@ double** matrix_alloc(int nr, int nc) {
 }
 
 int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** output) {
-    if (a == NULL)
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("matrix multiply NULL ptr");
+        return 1;
+    }
     #pragma omp parallel
     {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nra; i += inc) {
+            for (int j = id; j < ncb; i += inc) {
+                double temp = 0;
+                for (int k = 0; k < nca; k++) {
+                    temp += a[i][k] * b[k][j];
+                }
+                output[i][j] = temp;
+            }
+        }
     }
     return 0;
 }
