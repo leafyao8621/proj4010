@@ -17,8 +17,6 @@ struct Constraint {
 };
 
 struct Model {
-    int num_var;
-    double* non_basic_coef;
-    double** basic_cons_mat;
-    double** non_basic_cons_mat;
+    int num_non_basic;
+    int num_basic;
 };
