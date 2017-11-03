@@ -34,12 +34,30 @@ int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** 
         int id = omp_get_thread_num();
         int inc = omp_get_num_threads();
         for (int i = id; i < nra; i += inc) {
-            for (int j = id; j < ncb; i += inc) {
+            for (int j = 0; j < ncb; j++) {
                 double temp = 0;
                 for (int k = 0; k < nca; k++) {
                     temp += a[i][k] * b[k][j];
                 }
                 output[i][j] = temp;
+            }
+        }
+    }
+    return 0;
+}
+
+int matrix_add(int nr, int nc, double** a, double** b, double** output) {
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("matrix multiply NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nr; i += inc) {
+            for (int j = 0; j < nc; j++) {
+                output[i][j] = a[i][j] + b[i][j];
             }
         }
     }
