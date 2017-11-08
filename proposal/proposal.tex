@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{verbatim}
+\begin{document}
+	\begin{center}
+		\begin{LARGE}
+			\textbf{Linear Program Solver}\\
+		\end{LARGE}
+		Erik Rosenstrom\\
+		Yi Yao\\
+		Xaiofan Wu\\
+	\end{center}
+	We, as a team of three will collaboratively develop a solver for linear programming problems solver implementing the Simplex Method.\\
+	The software will do the following:\\
+	\begin{enumerate}
+		\item 
+		Read in problem definition from a file written in a particular format.\\
+		An example file is as follows:\\
+		\verbatiminput{inp_ex.txt}
+		The first number in the first row indicates the number of variables.\\
+		The second number in the second row indicates the number of constraints.\\
+		The first number in the second row is either 0 or 1. When it is 1, maximize the objective function, otherwise, minimize the objective function.\\
+		The following numbers in the second row are coefficients of the variables in the objective function.\\
+		The following rows are the constraints.\\
+		The last but one numbers can have value 0, 1 or 2. 0 stands for less than or equal to, and 1 stands for equal to, while 2 stands for greater than or equal to.
+		\item 
+		Construct a model using the input data.
+		\item 
+		Solve the model
+		\item 
+		Output result to console or file
+	\end{enumerate}
+	Division of work:\\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		I/O &Building up the model &Model Solver &Vector and Matrix Operations\\
+		\hline
+		Eric Rosenstrom &Eric Rosenstrom &Yi Yao &Xiaofan Wu\\
+		\hline
+	\end{tabular}
+\end{document}

@@ -48,7 +48,7 @@ int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** 
 
 int matrix_add(int nr, int nc, double** a, double** b, double** output) {
     if (a == NULL || b == NULL || output == NULL) {
-        puts("matrix multiply NULL ptr");
+        puts("matrix add NULL ptr");
         return 1;
     }
     #pragma omp parallel
@@ -59,6 +59,44 @@ int matrix_add(int nr, int nc, double** a, double** b, double** output) {
             for (int j = 0; j < nc; j++) {
                 output[i][j] = a[i][j] + b[i][j];
             }
+        }
+    }
+    return 0;
+}
+
+int matrix_subtract(int nr, int nc, double** a, double** b, double** output) {
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("matrix subtract NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nr; i += inc) {
+            for (int j = 0; j < nc; j++) {
+                output[i][j] = a[i][j] - b[i][j];
+            }
+        }
+    }
+    return 0;
+}
+
+int right_multiply(int da, int ncb, double* a, double** b, double* output) {
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("right multiply NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < ncb; i += inc) {
+            double temp = 0;
+            for (int j = 0; j < da; j++) {
+                temp += a[j] * b[j][i];
+            }
+            output[i] = temp;
         }
     }
     return 0;
