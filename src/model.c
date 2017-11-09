@@ -3,20 +3,19 @@
 #define EQ 1
 #define GEQ 2
 
-struct Variable {
-    int index;
-    double value;
-    double objective_coef;
-    double p1_coef;
-};
-
 struct Constraint {
     int side;
-    Variable* slack;
-    Variable* artificial;
+    double value;
 };
 
 struct Model {
     int num_non_basic;
     int num_basic;
+    double** b_matrix;
+    double** n_matrix;
+    double* cb_vector;
+    double* cn_vector;
+    double* xb_index_vector;
+    double* xn_index_vector;
+    double* b_vector;
 };
