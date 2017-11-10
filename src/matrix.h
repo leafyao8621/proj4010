@@ -1,6 +1,7 @@
 double** matrix_alloc(int nr, int nc);
 int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** output);
 int right_multiply(int da, int ncb, double* a, double** b, double* output);
+int left_multiply(int nra, int db, double** a, double* b, double* output);
 int matrix_add(int nr, int nc, double** a, double** b, double** output);
 int matrix_subtract(int nr, int nc, double** a, double** b, double** output);
 int vector_add(int dim, double* a, double* b, double** output);

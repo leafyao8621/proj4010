@@ -101,3 +101,23 @@ int right_multiply(int da, int ncb, double* a, double** b, double* output) {
     }
     return 0;
 }
+
+int left_multiply(int nra, int db, double** a, double* b, double* output) {
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("right multiply NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nra; i += inc) {
+            double temp = 0;
+            for (int j = 0; j < db; j++) {
+                temp += a[i][j] * b[j];
+            }
+            output[i] = temp;
+        }
+    }
+    return 0;
+}
