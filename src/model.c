@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "model.h"
 #define LEQ 0
 #define EQ 1

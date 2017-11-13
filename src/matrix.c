@@ -3,6 +3,10 @@
 #include <omp.h>
 #include "matrix.h"
 
+double* vector_alloc(int n) {
+    return malloc(sizeof(double) * n);
+}
+
 double** matrix_alloc(int nr, int nc) {
     double** output = malloc(sizeof(double*) * nr);
     if (output == NULL) {

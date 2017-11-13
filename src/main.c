@@ -3,25 +3,28 @@
 #include "matrix.h"
 int main() {
     omp_set_num_threads(omp_get_max_threads());
-    double** a;
-    double** b;
-    a = matrix_alloc(2, 2);
-    b = matrix_alloc(2, 3);
-    a[0][0] = 1;
-    a[0][1] = 2;
-    a[1][0] = 3;
-    a[1][1] = 4;
-    b[0][0] = 1;
-    b[0][1] = 2;
-    b[1][0] = 4;
-    b[1][1] = 5;
-    double** out;
-    out = matrix_alloc(2, 2);
-    matrix_multiply(2, 2, 2, a, b, out);
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 2; j++) {
-            printf("%lf,", out[i][j]);
+    double* a[5];
+    double ar1[] = {1,2,3,4};
+    double ar2[] = {2,4,6,8};
+    double ar3[] = {3,6,9,12};
+    double ar4[] = {4,8,12,16};
+    double ar5[] = {5,10,15,20}; 
+    a[0] = &ar1[0];
+    a[1] = &ar2[0];
+    a[2] = &ar3[0];
+    a[3] = &ar4[0];
+    a[4] = &ar5[0];
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            printf("%.2lf ", a[i][j]);
         }
+        puts("");
+    }
+    double b[] = {1,2,3,4,5};
+    double* opt = vector_alloc(4);
+    right_multiply(5, 5, b, a, opt);
+    for (int i = 0; i < 5; i++) {
+        printf("%lf,", opt[i]);
         puts("");
     }
     return 0;

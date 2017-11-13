@@ -1,3 +1,4 @@
+double* vector_alloc(int n);
 double** matrix_alloc(int nr, int nc);
 int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** output);
 int right_multiply(int da, int ncb, double* a, double** b, double* output);
