@@ -28,6 +28,27 @@ double** matrix_alloc(int nr, int nc) {
     return output;
 }
 
+double** matrix_calloc(int nr, int nc) {
+    double** output = malloc(sizeof(double*) * nr);
+    if (output == NULL) {
+        puts("matrix calloc malloc error");
+        return NULL;
+    }
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nr; i += inc) {
+            output[i] = calloc(nc, sizeof(double));
+            if (output[i] == NULL) {
+                puts("matrix calloc calloc error");
+                exit(1);
+            }
+        }
+    }
+    return output;
+}
+
 int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** output) {
     if (a == NULL || b == NULL || output == NULL) {
         puts("matrix multiply NULL ptr");

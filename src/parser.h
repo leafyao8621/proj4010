@@ -1,4 +1,3 @@
 #include "model.h"
-Model* get_main(void);
-Model* get_aux(void);
+Model* get(void);
 int init_model(char* file_name);
