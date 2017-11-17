@@ -246,3 +246,29 @@ int swap_column(int ca, int cb, int nr, double** a, double** b) {
     }
     return 0;
 }
+
+int print_vector(int dim, double* vector) {
+    if (vector == NULL) {
+        puts("print vector NULL ptr");
+        return 1;
+    }
+    for (int i = 0; i < dim - 1; i++) {
+        printf("%.2lf ", vector[i]);
+    }
+    printf("%.2lf\n", vector[dim - 1]);
+    return 0;
+}
+
+int print_matrix(int nr, int nc, double** matrix) {
+    if (matrix == NULL) {
+        puts("print matrix NULL ptr");
+        return 1;
+    }
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc - 1; j++) {
+            printf("%.2lf ", matrix[i][j]);
+        }
+        printf("%.2lf\n", matrix[i][nc - 1]);
+    }
+    return 0;
+}

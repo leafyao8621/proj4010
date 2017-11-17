@@ -12,3 +12,5 @@ int vector_scalar_multiply(int dim, double* a, double factor, double* output);
 int matrix_invert(int dim, double** a, double** output);//todo
 int free_matrix(int nr, double** a);
 int swap_column(int ca, int cb, int nr, double** a, double** b);
+int print_vector(int dim, double* vector);
+int print_matrix(int nr, int nc, double** matrix);
