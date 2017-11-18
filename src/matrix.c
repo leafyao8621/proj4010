@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <omp.h>
 #include "matrix.h"
 
@@ -54,17 +55,14 @@ int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** 
         puts("matrix multiply NULL ptr");
         return 1;
     }
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        int inc = omp_get_num_threads();
-        for (int i = id; i < nra; i += inc) {
-            for (int j = 0; j < ncb; j++) {
-                double temp = 0;
-                for (int k = 0; k < nca; k++) {
-                    temp += a[i][k] * b[k][j];
+    #pragma omp parallel for collapse(3)
+    for (int i = 0; i < nra; i++) {
+        for (int j = 0; j < ncb; j++) {
+            for (int k = 0; k < nca; k++) {
+                if (!k) {
+                    output[i][j] = 0;
                 }
-                output[i][j] = temp;
+                output[i][j] += a[i][k] * b[k][j];
             }
         }
     }
@@ -247,6 +245,17 @@ int swap_column(int ca, int cb, int nr, double** a, double** b) {
     return 0;
 }
 
+int swap_row(int ra, int rb, double** a, double** b) {
+    if (a == NULL || b == NULL) {
+        puts("swap row NULL ptr");
+        return 1;
+    }
+    double* temp = a[ra];
+    a[ra] = b[rb];
+    b[rb] = temp;
+    return 0;
+}
+
 int print_vector(int dim, double* vector) {
     if (vector == NULL) {
         puts("print vector NULL ptr");
@@ -271,4 +280,83 @@ int print_matrix(int nr, int nc, double** matrix) {
         printf("%.2lf\n", matrix[i][nc - 1]);
     }
     return 0;
+}
+
+int print_vector_int(int dim, int* vector) {
+    if (vector == NULL) {
+        puts("print vector NULL ptr");
+        return 1;
+    }
+    for (int i = 0; i < dim - 1; i++) {
+        printf("%d ", vector[i]);
+    }
+    printf("%d\n", vector[dim - 1]);
+    return 0;
+}
+
+int print_matrix_int(int nr, int nc, int** matrix) {
+    if (matrix == NULL) {
+        puts("print matrix NULL ptr");
+        return 1;
+    }
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc - 1; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("%d\n", matrix[i][nc - 1]);
+    }
+    return 0;
+}
+
+int matrix_copy(int nr, int nc, double** from, double** to) {
+    if (from == NULL || to == NULL) {
+        puts("matrix copy NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel for
+    for (int i = 0; i < nr; i++) {
+        memcpy(to[i], from[i], sizeof(double) * nc);
+    }
+    return 0;
+}
+
+double** create_identity(int dim) {
+    double** opt = malloc(dim * sizeof(double*));
+    if (opt == NULL) {
+        puts("create identity malloc err");
+        return NULL;
+    }
+    #pragma omp parallel for
+    for (int i = 0; i < dim; i++) {
+        opt[i] = calloc(dim, sizeof(double));
+        if (opt[i] == NULL) {
+            puts("create identity calloc err");
+            exit(1);
+        }
+        opt[i][i] = 1;
+    }
+    return opt;
+}
+
+int matrix_invert(int dim, double** a, double** output) {
+    if (a == NULL || output == NULL) {
+        puts("matrix invers NULL ptr");
+        return 1;
+    }
+    matrix_copy(dim, dim, a, output);
+    double** i_matrix = create_identity(dim);
+    for (int i = 0; i < dim; i++) {
+        int j;
+        for (j = i; j < dim && output[i][j] == 0; j++);
+        if (output[i][j] == 0) {
+            return -1;
+        }
+        swap_row(i, j, output, output);
+        double scale = output[i][i];
+        #pragma omp parallel for
+        for (int j = 1; j < dim; j++) {
+            output[i][j] = output[i][j] / scale;
+            i_matrix[i][j] = i_matrix[i][j] / scale;
+        }
+    }
 }

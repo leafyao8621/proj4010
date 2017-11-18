@@ -12,5 +12,10 @@ int vector_scalar_multiply(int dim, double* a, double factor, double* output);
 int matrix_invert(int dim, double** a, double** output);//todo
 int free_matrix(int nr, double** a);
 int swap_column(int ca, int cb, int nr, double** a, double** b);
+int swap_row(int ra, int rb, double** a, double** b);
 int print_vector(int dim, double* vector);
 int print_matrix(int nr, int nc, double** matrix);
+int print_vector_int(int dim, int* vector);
+int print_matrix_int(int nr, int nc, int** matrix);
+int matrix_copy(int nr, int nc, double** from, double** to);
+double** create_identity(int dim);
