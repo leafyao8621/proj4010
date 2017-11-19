@@ -55,15 +55,15 @@ int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** 
         puts("matrix multiply NULL ptr");
         return 1;
     }
-    #pragma omp parallel for collapse(3)
+    #pragma omp parallel for collapse(2)
     for (int i = 0; i < nra; i++) {
         for (int j = 0; j < ncb; j++) {
+            double temp = 0;
+            #pragma omp parallel for
             for (int k = 0; k < nca; k++) {
-                if (!k) {
-                    output[i][j] = 0;
-                }
-                output[i][j] += a[i][k] * b[k][j];
+                temp += a[i][k] * b[k][j];
             }
+            output[i][j] = temp;
         }
     }
     return 0;
@@ -344,19 +344,47 @@ int matrix_invert(int dim, double** a, double** output) {
         return 1;
     }
     matrix_copy(dim, dim, a, output);
+    
     double** i_matrix = create_identity(dim);
     for (int i = 0; i < dim; i++) {
-        int j;
-        for (j = i; j < dim && output[i][j] == 0; j++);
-        if (output[i][j] == 0) {
-            return -1;
+        if (output[i][i] == 0) {
+            int j;
+            for (j = i; j < dim && output[i][j] == 0; j++);
+            if (output[i][j] == 0) {
+                return -1;
+            }
+            swap_row(i, j, output, output);
         }
-        swap_row(i, j, output, output);
         double scale = output[i][i];
         #pragma omp parallel for
-        for (int j = 1; j < dim; j++) {
+        for (int j = 0; j < dim; j++) {
             output[i][j] = output[i][j] / scale;
             i_matrix[i][j] = i_matrix[i][j] / scale;
         }
+        if (i < dim - 1) {
+            #pragma omp parallel for
+            for (int j = i + 1; j < dim; j++) {
+                double factor = output[j][i];
+                #pragma omp parallel for
+                for (int k = 0; k < dim; k++) {
+                    output[j][k] = output[j][k] - factor * output[i][k];
+                    i_matrix[j][k] = i_matrix[j][k] - factor * i_matrix[i][k];
+                }
+            }
+        }
     }
+    for (int i = dim - 1; i > 0; i--) {
+        #pragma parallel for
+        for (int j = i - 1; j > -1; j--) {
+            double factor = output[j][i];
+            #pragma omp parallel for
+            for (int k = 1; k < dim; k++) {
+                output[j][k] = output[j][k] - factor * output[i][k];
+                i_matrix[j][k] = i_matrix[j][k] - factor * i_matrix[i][k];
+            }
+        }
+    }
+    matrix_copy(dim, dim, i_matrix, output);
+    free_matrix(dim, i_matrix);
+    return 0;
 }

@@ -14,7 +14,11 @@ int main() {
         }
     }
     
-    double** c = create_identity(10);
-    print_matrix(10, 10, c);
+    double** c = create_identity(5);
+    double** d = matrix_alloc(5, 5);
+    matrix_invert(5, b, d);
+    print_matrix(5, 5, b);
+    NL
+    print_matrix(5, 5, d);
     return 0;
 }
