@@ -5,6 +5,10 @@
 #define LEQ 0
 #define EQ 1
 #define GEQ 2
+#define UNF 0
+#define OPT 1
+#define INF 2
+#define UBD 3
 #define NL puts("");
 
 struct Constraint {
@@ -13,6 +17,7 @@ struct Constraint {
 };
 
 struct Model {
+    int stat;
     int num_non_basic;
     int num_basic;
     int num_art;
@@ -33,6 +38,7 @@ Model* new_Model(int num_non_basic,
                  int* xn_index_vector,
                  int* xb_index_vector) {
     Model* opt = malloc(sizeof(Model));
+    opt->stat = UNF;
     opt->num_non_basic = num_non_basic;
     opt->num_basic = num_basic;
     opt->cn_vector = cn_vector;
@@ -74,6 +80,12 @@ int add_constraint(Model* model, int rn, double* row, int side, double val) {
     return 0;
 }
 
+int check(Model* model) {
+    
+}
+int pivot(Model* model, int in, int out) {
+    return 1;
+}
 int print_model(Model* model) {
     printf("num_basic: %d\n", model->num_basic);
     printf("num_non_basic: %d\n\n", model->num_non_basic);

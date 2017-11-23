@@ -5,4 +5,5 @@ Model* new_Model(int num_non_basic,
                  int* xn_index_vector,
                  int* xb_index_vector);
 int add_constraint(Model* model, int rn, double* row, int side, double val);
+int pivot(Model* model, int in, int out);
 int print_model(Model* model);
