@@ -21,11 +21,11 @@ int init_model(char* file_name) {
     int* xb_index_vector = malloc(sizeof(int) * num_basic);
     int* xn_index_vector = malloc(sizeof(int) * num_non_basic);
     for (int i = 0; i < num_non_basic; i++) {
-        xn_index_vector[i] = i + num_basic + 1;
+        xn_index_vector[i] = i + 1;
         fscanf(fin, "%lf", &cn_vector[i]);
     }
     for (int i = 0; i < num_basic; i++) {
-        xb_index_vector[i] = i + 1;
+        xb_index_vector[i] = i + num_non_basic + 1;
     }
     if (!is_max) {
         vector_scalar_multiply(num_non_basic, cn_vector, -1, cn_vector);
@@ -35,7 +35,6 @@ int init_model(char* file_name) {
                       cn_vector,
                       xn_index_vector,
                       xb_index_vector);
-    //print_model(model);
     for (int i = 0; i < num_basic; i++) {
         double* temp = malloc(num_non_basic * sizeof(double));
         for (int j = 0; j < num_non_basic; j++) {

@@ -18,4 +18,6 @@ int print_matrix(int nr, int nc, double** matrix);
 int print_vector_int(int dim, int* vector);
 int print_matrix_int(int nr, int nc, int** matrix);
 int matrix_copy(int nr, int nc, double** from, double** to);
+int find_max(int dim, double* vector, int* max_ind, double* max);
+int extract_column(int nr, int cn, double** matrix, double* output);
 double** create_identity(int dim);

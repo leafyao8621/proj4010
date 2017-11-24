@@ -385,3 +385,31 @@ int matrix_invert(int dim, double** a, double** output) {
     free_matrix(dim, i_matrix);
     return 0;
 }
+
+int find_max(int dim, double* vector, int* max_ind, double* max) {
+    if (vector == NULL || max == NULL) {
+        puts("find max NULL ptr");
+        return 1;
+    }
+    *max = vector[0];
+    #pragma omp parallel for
+    for (int i = 1; i < dim; i++) {
+        if (vector[i] > *max) {
+            *max_ind = i;
+            *max = vector[i];
+        }
+    }
+    return 0;
+}
+
+int extract_column(int nr, int cn, double** matrix, double* output) {
+    if (matrix == NULL || output == NULL) {
+        puts("extract column NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel for
+    for (int i = 0; i < nr; i++) {
+        output[i] = matrix[i][cn];
+    }
+    return 0;
+}

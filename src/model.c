@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
+#include <string.h>
 #include "model.h"
 #include "matrix.h"
 #define LEQ 0
@@ -80,12 +82,78 @@ int add_constraint(Model* model, int rn, double* row, int side, double val) {
     return 0;
 }
 
-int check(Model* model) {
-    
+int check(Model* model, int* ind) {
+    if (model == NULL || ind == NULL) {
+        return -1;
+    }
+    double** temp = matrix_alloc(model->num_basic, model->num_non_basic);
+    matrix_invert(model->num_basic, model->b_matrix, temp);
+    matrix_multiply(model->num_basic, model->num_basic, model->num_non_basic, temp, model->n_matrix, temp);
+    double* temp_v = malloc(sizeof(double) * model->num_non_basic);
+    right_multiply(model->num_basic, model->num_non_basic, model->cb_vector, temp, temp_v);
+    vector_subtract(model->num_non_basic, model->cn_vector, temp_v, temp_v);
+    free_matrix(model->num_basic, temp);
+    double max;
+    find_max(model->num_non_basic, temp_v, ind, &max);
+    return max >= 0;
 }
+
+int ratio_check(Model* model, int in_ind, int* ind) {
+    if (model == NULL || ind == NULL) {
+        puts("ratio check NULL ptr");
+        return -1;
+    }
+    *ind = 0;
+    double* temp = malloc(sizeof(double) * model->num_basic);
+    extract_column(model->num_basic, in_ind, model->n_matrix, temp);
+    double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
+    matrix_invert(model->num_basic, model->b_matrix, b_inv);
+    left_multiply(model->num_basic, model->num_basic, b_inv, temp, temp);
+    double min = model->b_vector[0] / temp[0];
+    #pragma omp parallel for
+    for (int i = 1; i < model->num_basic; i++) {
+        if (model->b_vector[i] / temp[i] < min) {
+            min = model->b_vector[i] /temp[i];
+            *ind = i;
+        }
+    }
+    return min >= 0;
+}
+
 int pivot(Model* model, int in, int out) {
-    return 1;
+    if (model == NULL) {
+        puts("pivot NULL ptr");
+        return 1;
+    }
+    int temp = model->xn_index_vector[in];
+    model->xn_index_vector[in] = model->xb_index_vector[out];
+    model->xb_index_vector[out] = temp;
+    double temp1 = model->cn_vector[in];
+    model->cn_vector[in] = model->cb_vector[out];
+    model->cb_vector[out] = temp1;
+    swap_column(in, out, model->num_basic, model->n_matrix, model->b_matrix);
+    return 0;
 }
+
+int solve(Model* model) {
+    int cond = 1;
+    while (cond) {
+        int in, out;
+        int cond_check, cond_rchk;
+        cond_check = check(model, &in);
+        cond_rchk = ratio_check(model, in, &out);
+        if (cond_check && cond_rchk) {
+            pivot(model, in, out);
+        } else {
+            if (!cond_rchk) {
+                model->stat = UBD;
+            }
+            cond = 0;
+        }
+        print_model(model);
+    }
+}
+
 int print_model(Model* model) {
     printf("num_basic: %d\n", model->num_basic);
     printf("num_non_basic: %d\n\n", model->num_non_basic);
@@ -107,4 +175,22 @@ int print_model(Model* model) {
     puts("n matrix:\n");
     print_matrix(model->num_basic, model->num_non_basic, model->n_matrix);
     NL
+}
+
+int print_sol(Model* model) {
+    if (model == NULL) {
+        puts("print sol NULL ptr");
+        return 1;
+    }
+    if (!model->stat) {
+        puts("calculation in process");
+        return 1;
+    }
+    double* xb = malloc(sizeof(double) * model->num_basic);
+    left_multiply(model->num_basic, model->num_basic, model->b_matrix, model->b_vector, xb);
+    for (int i = 0; i < model->num_basic; i++) {
+        if (model->xb_index_vector[i] <= model->num_non_basic) {
+            printf("x_%d = %.2lf\n\n", model->xb_index_vector[i], xb[i]);
+        }
+    }
 }

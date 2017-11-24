@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -g -o dbg src/*.c -fopenmp
+gcc -g -o dbg src/main.c src/matrix.c src/model.c src/parser.c -fopenmp
