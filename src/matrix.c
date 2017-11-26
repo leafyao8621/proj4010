@@ -182,14 +182,10 @@ int matrix_scalar_multiply(int nr, int nc, double** a, double factor, double** o
         puts("matrix scalar multiply NULL ptr");
         return 1;
     }
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        int inc = omp_get_num_threads();
-        for (int i = id; i < nr; i += inc) {
-            for (int j = 0; j < nc; j++) {
-                output[i][j] = a[i][j] * factor;
-            }
+    #pragma omp parallel for collapse(2)
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc; j++) {
+            output[i][j] = a[i][j] * factor;
         }
     }
     return 0;
@@ -262,9 +258,9 @@ int print_vector(int dim, double* vector) {
         return 1;
     }
     for (int i = 0; i < dim - 1; i++) {
-        printf("%.2lf ", vector[i]);
+        printf("%lf ", vector[i]);
     }
-    printf("%.2lf\n", vector[dim - 1]);
+    printf("%lf\n", vector[dim - 1]);
     return 0;
 }
 
@@ -275,9 +271,9 @@ int print_matrix(int nr, int nc, double** matrix) {
     }
     for (int i = 0; i < nr; i++) {
         for (int j = 0; j < nc - 1; j++) {
-            printf("%.2lf ", matrix[i][j]);
+            printf("%lf ", matrix[i][j]);
         }
-        printf("%.2lf\n", matrix[i][nc - 1]);
+        printf("%lf\n", matrix[i][nc - 1]);
     }
     return 0;
 }
@@ -392,11 +388,39 @@ int find_max(int dim, double* vector, int* max_ind, double* max) {
         return 1;
     }
     *max = vector[0];
+    *max_ind = 0;
     #pragma omp parallel for
     for (int i = 1; i < dim; i++) {
-        if (vector[i] > *max) {
-            *max_ind = i;
-            *max = vector[i];
+        #pragma omp critical
+        {
+            if (vector[i] > *max) {
+                *max_ind = i;
+                *max = vector[i];
+            }
+        }
+    }
+    return 0;
+}
+
+int find_next_max(int dim, double* vector, int* max_ind, double* max, int* exc) {
+    if (vector == NULL || max == NULL) {
+        puts("find max NULL ptr");
+        return 1;
+    }
+    int max_set = 0;
+    #pragma omp parallel for
+    for (int i = 0; i < dim; i++) {
+        #pragma omp critical
+        {
+            if (!max_set && !exc[i]) {
+                *max_ind = i;
+                *max = vector[i];
+                max_set = 1;
+            }
+            if (!exc[i] && vector[i] > *max) {
+                *max_ind = i;
+                *max = vector[i];
+            }
         }
     }
     return 0;
@@ -410,6 +434,28 @@ int extract_column(int nr, int cn, double** matrix, double* output) {
     #pragma omp parallel for
     for (int i = 0; i < nr; i++) {
         output[i] = matrix[i][cn];
+    }
+    return 0;
+}
+
+int dot_product(int dim, double* a, double* b, double* output) {
+    if (a == NULL || b == NULL || output == NULL) {
+        puts("dot product NULL ptr");
+        return 1;
+    }
+    *output = 0;
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        double temp = 0;
+        for (int i = id; i < dim; i += inc) {
+            temp += a[i] * b[i];
+        }
+        #pragma omp critical
+        {
+            *output += temp;
+        }
     }
     return 0;
 }

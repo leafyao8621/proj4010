@@ -30,7 +30,8 @@ int init_model(char* file_name) {
     if (!is_max) {
         vector_scalar_multiply(num_non_basic, cn_vector, -1, cn_vector);
     }
-    model = new_Model(num_non_basic,
+    model = new_Model(is_max,
+                      num_non_basic,
                       num_basic,
                       cn_vector,
                       xn_index_vector,

@@ -19,6 +19,7 @@ struct Constraint {
 };
 
 struct Model {
+    int is_max;
     int stat;
     int num_non_basic;
     int num_basic;
@@ -34,12 +35,14 @@ struct Model {
     int* art_ind_vector;
 };
 
-Model* new_Model(int num_non_basic,
+Model* new_Model(int is_max,
+                 int num_non_basic,
                  int num_basic,
                  double* cn_vector,
                  int* xn_index_vector,
                  int* xb_index_vector) {
     Model* opt = malloc(sizeof(Model));
+    opt->is_max = is_max;
     opt->stat = UNF;
     opt->num_non_basic = num_non_basic;
     opt->num_basic = num_basic;
@@ -62,7 +65,6 @@ int add_constraint(Model* model, int rn, double* row, int side, double val) {
             vector_scalar_multiply(model->num_non_basic, row, -1, row);
         } else {
             negative = 1;
-            model->art_ind_vector[model->num_art++] = rn;
         }
     }
     if (side == LEQ && val < 0) {
@@ -150,7 +152,6 @@ int solve(Model* model) {
             }
             cond = 0;
         }
-        print_model(model);
     }
 }
 
@@ -172,8 +173,11 @@ int print_model(Model* model) {
     puts("b_matrix:\n");
     print_matrix(model->num_basic, model->num_basic, model->b_matrix);
     NL
-    puts("n matrix:\n");
+    puts("n_matrix:\n");
     print_matrix(model->num_basic, model->num_non_basic, model->n_matrix);
+    NL
+    puts("b_vector:\n");
+    print_vector(model->num_basic, model->b_vector);
     NL
 }
 
@@ -187,10 +191,21 @@ int print_sol(Model* model) {
         return 1;
     }
     double* xb = malloc(sizeof(double) * model->num_basic);
-    left_multiply(model->num_basic, model->num_basic, model->b_matrix, model->b_vector, xb);
+    double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
+    matrix_invert(model->num_basic, model->b_matrix, b_inv);
+    left_multiply(model->num_basic, model->num_basic, b_inv, model->b_vector, xb);
     for (int i = 0; i < model->num_basic; i++) {
         if (model->xb_index_vector[i] <= model->num_non_basic) {
-            printf("x_%d = %.2lf\n\n", model->xb_index_vector[i], xb[i]);
+            printf("x_%d = %lf\n\n", model->xb_index_vector[i], xb[i]);
         }
     }
+    for (int i = 0; i < model->num_non_basic; i++) {
+        if (model->xn_index_vector[i] <= model->num_non_basic) {
+            printf("x_%d = %lf\n\n", model->xn_index_vector[i], 0.0);
+        }
+    }
+    double opt_val;
+    dot_product(model->num_basic, model->cb_vector, xb, &opt_val);
+    printf("opt_val = %lf\n", opt_val);
+    return 0;
 }
