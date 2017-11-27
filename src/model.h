@@ -7,7 +7,7 @@ Model* new_Model(int is_max,
                  int* xb_index_vector);
 int add_constraint(Model* model, int rn, double* row, int side, double val);
 int pivot(Model* model, int in, int out);
-int check(Model* model, int* in);
+int check(Model* model, int* in, int* out);
 int ratio_check(Model* model, int in_ind, int* ind);
 int solve(Model* model);
 int print_model(Model* model);

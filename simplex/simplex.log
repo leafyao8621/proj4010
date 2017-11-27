@@ -1,0 +1,239 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.11.21)  26 NOV 2017 20:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**simplex.tex
+(./simplex.tex
+LaTeX2e <2017-04-15>
+Babel <3.12> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/slides.cls
+Document Class: slides 2016/03/29 v2.4a Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/slides.def
+File: slides.def 2016/03/29 v2.4a SLiTeX definitions
+ hacks, slides,
+\c@page=\count79
+
+picture, mods,
+\@smashboxa=\box26
+\@smashboxb=\box27
+\@smashboxc=\box28
+ output, init)
+(/usr/share/texlive/texmf-dist/tex/latex/base/sfonts.def
+File: sfonts.def 1998/06/12 v2.2e Standard LaTeX slide font definitions
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1lcmss.fd
+File: ot1lcmss.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+))
+\c@minutes=\count80
+\c@seconds=\count81
+\c@mv@invisible=\count82
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/n on input line 359.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/it on input line 362.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/n on input line 364.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/n on input line 366.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `invisible'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/In on input line 369.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `invisible'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/Iit on input line 371.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `invisible'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/In on input line 373.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `invisibl
+e'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/In on input line 375.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count83
+\Gm@cntv=\count84
+\c@Gm@tempcnt=\count85
+\Gm@bindingoffset=\dimen102
+\Gm@wd@mp=\dimen103
+\Gm@odd@mp=\dimen104
+\Gm@even@mp=\dimen105
+\Gm@layoutwidth=\dimen106
+\Gm@layoutheight=\dimen107
+\Gm@layouthoffset=\dimen108
+\Gm@layoutvoffset=\dimen109
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks17
+\verbatim@line=\toks18
+\verbatim@in@stream=\read1
+)
+
+LaTeX Warning: Unused global option(s):
+    [pdftex].
+
+(./simplex.aux)
+\openout1 = `simplex.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/lcmss/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 7.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: landscape 
+* h-part:(L,W,R)=(119.2467pt, 556.47656pt, 119.24672pt)
+* v-part:(T,H,B)=(73.71613pt, 430.00462pt, 110.57425pt)
+* \paperwidth=794.96999pt
+* \paperheight=614.295pt
+* \textwidth=556.47656pt
+* \textheight=430.00462pt
+* \oddsidemargin=46.97672pt
+* \evensidemargin=46.97672pt
+* \topmargin=-27.55386pt
+* \headheight=14.0pt
+* \headsep=15.0pt
+* \topskip=30.0pt
+* \footskip=25.0pt
+* \marginparwidth=58.0312pt
+* \marginparsep=5.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 2.0pt minus 4.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <23.89> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 8.
+LaTeX Font Info:    Try loading font information for OML+lcmm on input line 11.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omllcmm.fd
+File: omllcmm.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    Try loading font information for OMS+lcmsy on input line 11
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omslcmsy.fd
+File: omslcmsy.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    Try loading font information for OMX+lcmex on input line 11
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omxlcmex.fd
+File: omxlcmex.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <23.89> on input line 11.
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <19.907> on input line 11.
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <16.59> on input line 11.
+LaTeX Font Info:    Try loading font information for U+msa on input line 11.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [0
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [0] [0]
+Overfull \hbox (9.92952pt too wide) in paragraph at lines 40--42
+[]$[]$\OT1/phv/m/n/23.89 : Co-ef-fi-cient vec-tor of Non-Basic Vari-ables (Vari
+-
+ []
+
+[0] [0] [0] [0] [0]
+Overfull \hbox (18.59395pt too wide) in paragraph at lines 68--70
+[]\OT1/phv/m/n/23.89 The ob-jec-tive of ``Phase One'' is to max-i-mize $\OMS/lc
+msy/m/n/23.89 ^^@ [][] []$ 
+ []
+
+[0] [0]
+LaTeX Font Info:    Try loading font information for OT1+lcmtt on input line 80
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ot1lcmtt.fd
+File: ot1lcmtt.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+File: 1.txt  (verbatim)
+ [0] [0]
+File: 2.txt  (verbatim)
+
+[0]
+File: ../inp/inp.txt  (verbatim)
+ [0] [0]
+File: chk.txt  (verbatim)
+ [0]
+File: ans.txt  (verbatim)
+ [0] (./simplex.aux) ) 
+Here is how much of TeX's memory you used:
+ 1204 strings out of 494931
+ 16961 string characters out of 6180850
+ 66769 words of memory out of 5000000
+ 4525 multiletter control sequences out of 15000+600000
+ 12000 words of font info for 36 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,6n,26p,198b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.en
+c}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/latxfont/lcmss8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvr8a.pfb>
+Output written on simplex.pdf (17 pages, 76467 bytes).
+PDF statistics:
+ 92 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

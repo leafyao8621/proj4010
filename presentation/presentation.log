@@ -1,0 +1,972 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.11.21)  26 NOV 2017 21:25
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**presentation.tex
+(./presentation.tex
+LaTeX2e <2017-04-15>
+Babel <3.12> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/slides.cls
+Document Class: slides 2016/03/29 v2.4a Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/slides.def
+File: slides.def 2016/03/29 v2.4a SLiTeX definitions
+ hacks, slides,
+\c@page=\count79
+
+picture, mods,
+\@smashboxa=\box26
+\@smashboxb=\box27
+\@smashboxc=\box28
+ output, init)
+(/usr/share/texlive/texmf-dist/tex/latex/base/sfonts.def
+File: sfonts.def 1998/06/12 v2.2e Standard LaTeX slide font definitions
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1lcmss.fd
+File: ot1lcmss.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+))
+\c@minutes=\count80
+\c@seconds=\count81
+\c@mv@invisible=\count82
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/n on input line 359.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/it on input line 362.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/n on input line 364.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/n on input line 366.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `invisible'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/In on input line 369.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `invisible'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/Iit on input line 371.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `invisible'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/In on input line 373.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `invisibl
+e'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/In on input line 375.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2017/08/14 v0.5k Insert pages of external PDF documents (AM)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count83
+\calc@Bcount=\count84
+\calc@Adimen=\dimen102
+\calc@Bdimen=\dimen103
+\calc@Askip=\skip41
+\calc@Bskip=\skip42
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count85
+\calc@Cskip=\skip43
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+\AM@pagewidth=\dimen106
+\AM@pageheight=\dimen107
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2017/08/14 v0.5k Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box29
+\AM@global@opts=\toks15
+\AM@toc@title=\toks16
+\c@AM@survey=\count86
+\AM@templatesizebox=\box30
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen108
+\Gm@wd@mp=\dimen109
+\Gm@odd@mp=\dimen110
+\Gm@even@mp=\dimen111
+\Gm@layoutwidth=\dimen112
+\Gm@layoutheight=\dimen113
+\Gm@layouthoffset=\dimen114
+\Gm@layoutvoffset=\dimen115
+\Gm@dimlist=\toks17
+)
+(./presentation.aux)
+\openout1 = `presentation.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/lcmss/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 6.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+\AtBeginShipoutBox=\box31
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count90
+\scratchdimen=\dimen116
+\scratchbox=\box32
+\nofMPsegments=\count91
+\nofMParguments=\count92
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count93
+\MPscratchDim=\dimen117
+\MPnumerator=\count94
+\makeMPintoPDFobject=\count95
+\everyMPtoPDFconversion=\toks19
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+))
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: landscape 
+* h-part:(L,W,R)=(119.2467pt, 556.47656pt, 119.24672pt)
+* v-part:(T,H,B)=(73.71613pt, 430.00462pt, 110.57425pt)
+* \paperwidth=794.96999pt
+* \paperheight=614.295pt
+* \textwidth=556.47656pt
+* \textheight=430.00462pt
+* \oddsidemargin=46.97672pt
+* \evensidemargin=46.97672pt
+* \topmargin=-27.55386pt
+* \headheight=14.0pt
+* \headsep=15.0pt
+* \topskip=30.0pt
+* \footskip=25.0pt
+* \marginparwidth=58.0312pt
+* \marginparsep=5.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 2.0pt minus 4.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<part1.pdf, id=1, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf>
+Package pdftex.def Info: part1.pdf  used on input line 7. on input line 7.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 7.
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf>
+Package pdftex.def Info: part1.pdf  used on input line 7. on input line 7.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 7.
+<part1.pdf, id=4, page=1, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 1>
+Package pdftex.def Info: part1.pdf , page1 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 7.
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 1>
+Package pdftex.def Info: part1.pdf , page1 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 1>
+Package pdftex.def Info: part1.pdf , page1 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 1>
+Package pdftex.def Info: part1.pdf , page1 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 1>
+Package pdftex.def Info: part1.pdf , page1 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+[0
+
+ <./part1.pdf>]
+<part1.pdf, id=21, page=2, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 2>
+Package pdftex.def Info: part1.pdf , page2 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 2>
+Package pdftex.def Info: part1.pdf , page2 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+File: part1.pdf Graphic file (type pdf)
+<use part1.pdf, page 2>
+Package pdftex.def Info: part1.pdf , page2 used on input line 7. on input line 
+7.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 7.
+
+ [0 <./part1.pdf>]
+<simplex.pdf, id=26, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf>
+Package pdftex.def Info: simplex.pdf  used on input line 8. on input line 8.
+Package pdftex.def Info: Requested size: 794.96806pt x 614.29349pt on input lin
+e 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf>
+Package pdftex.def Info: simplex.pdf  used on input line 8. on input line 8.
+Package pdftex.def Info: Requested size: 794.96806pt x 614.29349pt on input lin
+e 8.
+<simplex.pdf, id=29, page=1, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 1>
+Package pdftex.def Info: simplex.pdf , page1 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 794.96806pt x 614.29349pt on input lin
+e 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 1>
+Package pdftex.def Info: simplex.pdf , page1 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 1>
+Package pdftex.def Info: simplex.pdf , page1 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 1>
+Package pdftex.def Info: simplex.pdf , page1 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 1>
+Package pdftex.def Info: simplex.pdf , page1 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}>]
+<simplex.pdf, id=49, page=2, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 2>
+Package pdftex.def Info: simplex.pdf , page2 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 2>
+Package pdftex.def Info: simplex.pdf , page2 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 2>
+Package pdftex.def Info: simplex.pdf , page2 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=68, page=3, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 3>
+Package pdftex.def Info: simplex.pdf , page3 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 3>
+Package pdftex.def Info: simplex.pdf , page3 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 3>
+Package pdftex.def Info: simplex.pdf , page3 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=72, page=4, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 4>
+Package pdftex.def Info: simplex.pdf , page4 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 4>
+Package pdftex.def Info: simplex.pdf , page4 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 4>
+Package pdftex.def Info: simplex.pdf , page4 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=76, page=5, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 5>
+Package pdftex.def Info: simplex.pdf , page5 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 5>
+Package pdftex.def Info: simplex.pdf , page5 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 5>
+Package pdftex.def Info: simplex.pdf , page5 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=81, page=6, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 6>
+Package pdftex.def Info: simplex.pdf , page6 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 6>
+Package pdftex.def Info: simplex.pdf , page6 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 6>
+Package pdftex.def Info: simplex.pdf , page6 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=85, page=7, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 7>
+Package pdftex.def Info: simplex.pdf , page7 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 7>
+Package pdftex.def Info: simplex.pdf , page7 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 7>
+Package pdftex.def Info: simplex.pdf , page7 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=89, page=8, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 8>
+Package pdftex.def Info: simplex.pdf , page8 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 8>
+Package pdftex.def Info: simplex.pdf , page8 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 8>
+Package pdftex.def Info: simplex.pdf , page8 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=93, page=9, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 9>
+Package pdftex.def Info: simplex.pdf , page9 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 9>
+Package pdftex.def Info: simplex.pdf , page9 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 9>
+Package pdftex.def Info: simplex.pdf , page9 used on input line 8. on input lin
+e 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=102, page=10, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 10>
+Package pdftex.def Info: simplex.pdf , page10 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 10>
+Package pdftex.def Info: simplex.pdf , page10 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 10>
+Package pdftex.def Info: simplex.pdf , page10 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=106, page=11, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 11>
+Package pdftex.def Info: simplex.pdf , page11 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 11>
+Package pdftex.def Info: simplex.pdf , page11 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 11>
+Package pdftex.def Info: simplex.pdf , page11 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=116, page=12, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 12>
+Package pdftex.def Info: simplex.pdf , page12 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 12>
+Package pdftex.def Info: simplex.pdf , page12 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 12>
+Package pdftex.def Info: simplex.pdf , page12 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=120, page=13, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 13>
+Package pdftex.def Info: simplex.pdf , page13 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 13>
+Package pdftex.def Info: simplex.pdf , page13 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 13>
+Package pdftex.def Info: simplex.pdf , page13 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=124, page=14, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 14>
+Package pdftex.def Info: simplex.pdf , page14 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 14>
+Package pdftex.def Info: simplex.pdf , page14 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 14>
+Package pdftex.def Info: simplex.pdf , page14 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=128, page=15, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 15>
+Package pdftex.def Info: simplex.pdf , page15 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 15>
+Package pdftex.def Info: simplex.pdf , page15 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 15>
+Package pdftex.def Info: simplex.pdf , page15 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=132, page=16, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 16>
+Package pdftex.def Info: simplex.pdf , page16 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 16>
+Package pdftex.def Info: simplex.pdf , page16 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 16>
+Package pdftex.def Info: simplex.pdf , page16 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<simplex.pdf, id=136, page=17, pagebox=cropbox, 794.97pt x 614.295pt>
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 17>
+Package pdftex.def Info: simplex.pdf , page17 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 17>
+Package pdftex.def Info: simplex.pdf , page17 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+File: simplex.pdf Graphic file (type pdf)
+<use simplex.pdf, page 17>
+Package pdftex.def Info: simplex.pdf , page17 used on input line 8. on input li
+ne 8.
+Package pdftex.def Info: Requested size: 795.3441pt x 614.58406pt on input line
+ 8.
+ [0 <./simplex.pdf>]
+<part2.pdf, id=141, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf>
+Package pdftex.def Info: part2.pdf  used on input line 9. on input line 9.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 9.
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf>
+Package pdftex.def Info: part2.pdf  used on input line 9. on input line 9.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 9.
+<part2.pdf, id=144, page=1, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 1>
+Package pdftex.def Info: part2.pdf , page1 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 722.69823pt x 406.51775pt on input lin
+e 9.
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 1>
+Package pdftex.def Info: part2.pdf , page1 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 1>
+Package pdftex.def Info: part2.pdf , page1 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 1>
+Package pdftex.def Info: part2.pdf , page1 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 1>
+Package pdftex.def Info: part2.pdf , page1 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=172, page=2, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 2>
+Package pdftex.def Info: part2.pdf , page2 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 2>
+Package pdftex.def Info: part2.pdf , page2 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 2>
+Package pdftex.def Info: part2.pdf , page2 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=177, page=3, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 3>
+Package pdftex.def Info: part2.pdf , page3 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 3>
+Package pdftex.def Info: part2.pdf , page3 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 3>
+Package pdftex.def Info: part2.pdf , page3 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=182, page=4, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 4>
+Package pdftex.def Info: part2.pdf , page4 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 4>
+Package pdftex.def Info: part2.pdf , page4 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 4>
+Package pdftex.def Info: part2.pdf , page4 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=187, page=5, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 5>
+Package pdftex.def Info: part2.pdf , page5 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 5>
+Package pdftex.def Info: part2.pdf , page5 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 5>
+Package pdftex.def Info: part2.pdf , page5 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=192, page=6, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 6>
+Package pdftex.def Info: part2.pdf , page6 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 6>
+Package pdftex.def Info: part2.pdf , page6 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 6>
+Package pdftex.def Info: part2.pdf , page6 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=198, page=7, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 7>
+Package pdftex.def Info: part2.pdf , page7 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 7>
+Package pdftex.def Info: part2.pdf , page7 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 7>
+Package pdftex.def Info: part2.pdf , page7 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=204, page=8, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 8>
+Package pdftex.def Info: part2.pdf , page8 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 8>
+Package pdftex.def Info: part2.pdf , page8 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 8>
+Package pdftex.def Info: part2.pdf , page8 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+
+[0 <./part2.pdf>]
+<part2.pdf, id=209, page=9, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 9>
+Package pdftex.def Info: part2.pdf , page9 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 9>
+Package pdftex.def Info: part2.pdf , page9 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 9>
+Package pdftex.def Info: part2.pdf , page9 used on input line 9. on input line 
+9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=214, page=10, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 10>
+Package pdftex.def Info: part2.pdf , page10 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 10>
+Package pdftex.def Info: part2.pdf , page10 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 10>
+Package pdftex.def Info: part2.pdf , page10 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+<part2.pdf, id=219, page=11, pagebox=cropbox, 722.7pt x 406.51875pt>
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 11>
+Package pdftex.def Info: part2.pdf , page11 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 11>
+Package pdftex.def Info: part2.pdf , page11 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+File: part2.pdf Graphic file (type pdf)
+<use part2.pdf, page 11>
+Package pdftex.def Info: part2.pdf , page11 used on input line 9. on input line
+ 9.
+Package pdftex.def Info: Requested size: 795.73335pt x 447.6pt on input line 9.
+
+ [0 <./part2.pdf>]
+(./presentation.aux) ) 
+Here is how much of TeX's memory you used:
+ 3393 strings out of 494931
+ 50568 string characters out of 6180850
+ 111287 words of memory out of 5000000
+ 6660 multiletter control sequences out of 15000+600000
+ 4548 words of font info for 16 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 41i,18n,46p,279b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcmss8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on presentation.pdf (30 pages, 388531 bytes).
+PDF statistics:
+ 235 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -24,3 +24,5 @@ int find_next_max(int dim, double* vector, int* max_ind, double* max, int* exc);
 int extract_column(int nr, int cn, double** matrix, double* output);
 double** create_identity(int dim);
 int dot_product(int dim, double* a, double* b, double* output);
+int find_first_pos(int dim, double* vector, int* ind);
+int find_next_pos(int dim, int start, double* vector, int* ind);

@@ -1,0 +1,100 @@
+\documentclass[landscape,letterpaper,pdftex]{slides}
+\usepackage[landscape]{geometry}
+\usepackage{amssymb}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+\usepackage{verbatim}
+\begin{document}
+	\large{\textbf{Simplex Algorithm Overview}}
+	\begin{itemize}
+		\item
+		Simplex algorithm is an algorithm to solve linear programming problems.
+		\item
+		The linear programming problems we are to solve have a special constraint on the decision varibles requiring them to be greater than zero.
+	\end{itemize}
+	\newpage
+	\large{\textbf{Example}}
+	\[maximize\ 3x_1 + 2x_2 + 5x_3\]
+	\[s.t.\begin{array}{lcl}
+		2x_1 + 3x_2 + 6x_3 &\geqslant &5\\
+		7x_1 + 5x_2 + 2x_3 &\leqslant &1\\
+		3x_1 + 4x_2        &=         &2\\
+	\end{array}\]
+	\[\forall i \in \{1, 2, 3\}, x_i \geqslant 0\]
+	\newpage
+	\large{\textbf{Transformation}}
+	\[maximize\ 3x_1 + 2x_2 + 5x_3\]
+	\[s.t.\begin{array}{lcl}
+	2x_1 + 3x_2 + 6x_3 - x_4 + a_1 &= &5\\
+	7x_1 + 5x_2 + 2x_3 + x_5       &= &1\\
+	3x_1 + 4x_2 + a_2              &= &2\\
+	\end{array}\]
+	The added $x$ variables are called slack variables.\\
+	The added $a$ variables are called auxiliary/artificial variables.
+	\newpage
+	\large{\textbf{Notations}}
+	\begin{itemize}
+		\item
+		$\vec{c_{b}^{T}}$: Coefficient vector of Basic Variables (Variables that have non zero value) in the Objective Function
+		\item
+		$\vec{c_{n}^{T}}$: Coefficient vector of Non-Basic Variables (Variables are zero) in the Objective Function
+		\item
+		$B$: Coefficient matrix of Basic Variables in the constraints 
+		\item
+		$N$: Coefficient matrix of Non-Basic Variables in the constraints
+		\item
+		$\vec{b}$: Vector of the RHS values in the constraints
+		\item
+		$\vec{x_b}$: Vector of Basic Variables
+		\item
+		$\vec{x_n}$: Vector of Non-Basic Variables
+	\end{itemize}
+	\newpage
+	\large{\textbf{Matrix Representation}}
+	\[maximize\ \vec{c_{b}^{T}}\cdot \vec{x_b} + \vec{c_{n}^{T}}\cdot \vec{x_n}\]
+	\[s.t.\ B\vec{x_b} + N\vec{x_n} = \vec{b}\]
+	\newpage
+	The Objective function can also be written as:
+	\[c_{b}^{T}B^{-1}\vec{b} + (\vec{c_{n}^{T}} - \vec{c_{b}^{T}}B^{-1}N)x_{n}^{T}\]
+	The goal of the simplex algorithm is to set all dimensions of the vector $\vec{c_{n}^{T}} - \vec{c_{b}^{T}}B^{-1}N$ to be negative by swapping Basic and Non-Basic Variables (pivot).\\
+	The optimal value will be $c_{b}^{T}B^{-1}\vec{b}$\\
+	Each pivot will ``improve'' the objective value
+	\newpage
+	\large{\textbf{Two Phases}}
+	\begin{itemize}
+		\item
+		If $\exists$ Artificial Variable(s),``Phase One'' is required
+		\item
+		The objective of ``Phase One'' is to maximize $-\sum_{i}{a_i}$
+		\item
+		If the optimal value of ``Phase One'' $\neq$ 0, the linear program is infeasible; otherwise, it is feasible
+	\end{itemize}
+	\large{\textbf{Implementation}}
+	\begin{itemize}
+		\item
+		Single phase solver -- Finished
+		\item
+		``Phase One'' builder -- Work in Process
+	\end{itemize}
+	\newpage
+	\verbatiminput{1.txt}
+	\newpage
+	\verbatiminput{2.txt}
+	\newpage
+	\large{\textbf{Sample I/O}}\\
+	Input
+	\verbatiminput{../inp/inp.txt}
+	\newpage
+	\[maximize\ 10x_1 + 2x_2 + 5x_3\]
+	\[s.t.\begin{array}{lcl}
+	2x_1 + 4x_2 - 4x_3 &\leqslant &5\\
+	7x_1 + 5x_2 + 2x_3 &\leqslant &1\\
+	3x_1 + 4x_2 - x_3  &\leqslant &2\\
+	\end{array}\]
+	\newpage
+	Output
+	\verbatiminput{chk.txt}
+	\newpage
+	Output from Xpress IVE
+	\verbatiminput{ans.txt}
+\end{document}

@@ -1,0 +1,16 @@
+struct Model {
+    int is_max;
+    int stat;
+    int num_non_basic;
+    int num_basic;
+    int num_art;
+    double** b_matrix;
+    double** n_matrix;
+    double* cb_vector;
+    double* cn_vector;
+    int* xb_index_vector;
+    int* xn_index_vector;
+    double* b_vector;
+    double** art_matrix;
+    int* art_ind_vector;
+};

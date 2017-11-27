@@ -55,15 +55,18 @@ int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** 
         puts("matrix multiply NULL ptr");
         return 1;
     }
-    #pragma omp parallel for collapse(2)
-    for (int i = 0; i < nra; i++) {
-        for (int j = 0; j < ncb; j++) {
-            double temp = 0;
-            #pragma omp parallel for
-            for (int k = 0; k < nca; k++) {
-                temp += a[i][k] * b[k][j];
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int inc = omp_get_num_threads();
+        for (int i = id; i < nra; i += inc) {
+            for (int j = 0; j < ncb; j++) {
+                double temp = 0;
+                for (int k = 0; k < nca; k++) {
+                    temp += a[i][k] * b[k][j];
+                }
+                output[i][j] = temp;
             }
-            output[i][j] = temp;
         }
     }
     return 0;
@@ -391,12 +394,9 @@ int find_max(int dim, double* vector, int* max_ind, double* max) {
     *max_ind = 0;
     #pragma omp parallel for
     for (int i = 1; i < dim; i++) {
-        #pragma omp critical
-        {
-            if (vector[i] > *max) {
-                *max_ind = i;
-                *max = vector[i];
-            }
+        if (vector[i] >= *max) {
+            *max_ind = i;
+            *max = vector[i];
         }
     }
     return 0;
@@ -455,6 +455,28 @@ int dot_product(int dim, double* a, double* b, double* output) {
         #pragma omp critical
         {
             *output += temp;
+        }
+    }
+    return 0;
+}
+
+int find_first_pos(int dim, double* vector, int* ind) {
+    *ind = -1;
+    for (int i = 0; i < dim; i++) {
+        if (vector[i] > 0) {
+            *ind = i;
+            return 0;
+        }
+    }
+    return 0;
+}
+
+int find_next_pos(int dim, int start, double* vector, int* ind) {
+    *ind = -1;
+    for (int i = start + 1; i < dim; i++) {
+        if (vector[i] > 0) {
+            *ind = i;
+            return 0;
         }
     }
     return 0;
