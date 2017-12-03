@@ -109,8 +109,9 @@ int check(Model* model, int* in, int* out) {
         return 0;
     }
     find_first_pos(model->num_non_basic, temp_v, in);
-    int cnt = 0;
-    int* p_queue = malloc(sizeof(int) * model->num_non_basic);
+    int max_ind = *in;
+    // int cnt = 0;
+    // int* p_queue = malloc(sizeof(int) * model->num_non_basic);
     while (*in != -1) {
         int cond = ratio_check(model, *in, out);
         // printf("%d %d\n", *in, *out);
@@ -119,27 +120,30 @@ int check(Model* model, int* in, int* out) {
         if (!cond) {
             model->stat = UBD;
         } else {
-            p_queue[cnt] = *in;
-            int i = cnt;
-            if (!cnt) {
-                p_queue[0] = *in;
-            } else {
-                while (i >= 0) {
-                    if (temp_v[p_queue[i]] > temp_v[p_queue[i >> 1]]) {
-                        int temp = temp_v[p_queue[i >> 1]];
-                        temp_v[p_queue[i >> 1]] = temp_v[p_queue[i]];
-                        temp_v[p_queue[i]] = temp;
-                    } else {
-                        break;
-                    }
-                }
+            if (temp_v[*in] > temp_v[max_ind]) {
+                max_ind = *in;
             }
-            cnt++;
+            // p_queue[cnt] = *in;
+            // int i = cnt;
+            // if (!cnt) {
+            //     p_queue[0] = *in;
+            // } else {
+            //     while (i >= 0) {
+            //         if (temp_v[p_queue[i]] > temp_v[p_queue[i >> 1]]) {
+            //             int temp = temp_v[p_queue[i >> 1]];
+            //             temp_v[p_queue[i >> 1]] = temp_v[p_queue[i]];
+            //             temp_v[p_queue[i]] = temp;
+            //         } else {
+            //             break;
+            //         }
+            //     }
+            // }
+            // cnt++;
         }
         find_next_pos(model->num_non_basic, *in, temp_v, in);
     }
-    *in = p_queue[0];
-    free(p_queue);
+    *in = max_ind;
+    // free(p_queue);
     free(temp_v);
     return ratio_check(model, *in, out);
 }

@@ -1,4 +1,4 @@
 int pivot(Model* model, int in, int out);
 int check(Model* model, int* in, int* out);
 int ratio_check(Model* model, int in_ind,
-                int* ind, int* cond);
+                int* ind);

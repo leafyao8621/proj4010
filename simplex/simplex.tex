@@ -10,7 +10,7 @@
 		\item
 		Simplex algorithm is an algorithm to solve linear programming problems.
 		\item
-		The linear programming problems we are to solve have a special constraint on the decision varibles requiring them to be greater than zero.
+		The linear programming problems we are to solve have a special constraint on the decision varibles requiring them to be non-negative.
 	\end{itemize}
 	\newpage
 	\large{\textbf{Example}}
@@ -55,9 +55,9 @@
 	\[s.t.\ B\vec{x_b} + N\vec{x_n} = \vec{b}\]
 	\newpage
 	The Objective function can also be written as:
-	\[c_{b}^{T}B^{-1}\vec{b} + (\vec{c_{n}^{T}} - \vec{c_{b}^{T}}B^{-1}N)x_{n}^{T}\]
+	\[c_{b}^{T}B^{-1}\vec{b} + (\vec{c_{n}^{T}} - \vec{c_{b}^{T}}B^{-1}N)\vec{x_{n}}\]
 	The goal of the simplex algorithm is to set all dimensions of the vector $\vec{c_{n}^{T}} - \vec{c_{b}^{T}}B^{-1}N$ to be negative by swapping Basic and Non-Basic Variables (pivot).\\
-	The optimal value will be $c_{b}^{T}B^{-1}\vec{b}$\\
+	The objective value is $c_{b}^{T}B^{-1}\vec{b}$\\
 	Each pivot will ``improve'' the objective value
 	\newpage
 	\large{\textbf{Two Phases}}
@@ -85,11 +85,11 @@
 	Input
 	\verbatiminput{../inp/inp.txt}
 	\newpage
-	\[maximize\ 10x_1 + 2x_2 + 5x_3\]
+	\[maximize\ 10x_1 + 3x_2 + 5x_3\]
 	\[s.t.\begin{array}{lcl}
-	2x_1 + 4x_2 - 4x_3 &\leqslant &5\\
-	7x_1 + 5x_2 + 2x_3 &\leqslant &1\\
-	3x_1 + 4x_2 - x_3  &\leqslant &2\\
+	2x_1 +  4x_2 - 4x_3  &\leqslant &5\\
+	1x_1 - 20x_2 - 5x_3 &\leqslant &1\\
+	4x_1 +  2x_2 + 3x_3   &\leqslant &2\\
 	\end{array}\]
 	\newpage
 	Output
@@ -97,4 +97,20 @@
 	\newpage
 	Output from Xpress IVE
 	\verbatiminput{ans.txt}
+	\newpage
+	Input
+	\verbatiminput{../inp/inp1.txt}
+	\newpage
+	\[maximize\ 10x_1 + 3x_2 + 5x_3\]
+	\[s.t.\begin{array}{lcl}
+	2x_1 +  4x_2 - 4x_3  &\leqslant &5\\
+	1x_1 - 20x_2 - 5x_3 &\leqslant &1\\
+	4x_1 +  2x_2 - 3x_3   &\leqslant &2\\
+	\end{array}\]
+	\newpage
+	Output
+	\verbatiminput{chk1.txt}
+	\newpage
+	Output from Xpress IVE
+	\verbatiminput{ans1.txt}
 \end{document}
