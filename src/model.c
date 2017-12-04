@@ -196,12 +196,50 @@ int solve(Model* model) {
 }
 
 int remove_art(Model* model, double* backup) {
-    // model->num_non_basic -= model->num_art;
-    
-    int ind = 0;
-    for (int i = 0; i < model->num_non_basic; i++) {
-
+    if (model == NULL || backup == NULL) {
+        puts("remove art NULL ptr");
+        return 1;
     }
+    free(model->cb_vector);
+    model->cb_vector = calloc(model->num_basic, sizeof(double));
+    free(model->cn_vector);
+    model->cn_vector = malloc(sizeof(double) * (model->num_non_basic - model->num_art));
+    int* t_v = malloc(sizeof(double) * (model->num_non_basic - model->num_art));
+    double** t_m = matrix_alloc(model->num_basic, model->num_non_basic - model->num_art);
+    int ind = 0;
+    #pragma omp parallel for
+    for (int i = 0; i < model->num_non_basic; i++) {
+        if (model->xn_index_vector[i] <= model->num_non_basic) {
+            printf("%d\n", ind);
+            model->cn_vector[ind] = backup[model->xn_index_vector[i] - 1];
+            t_v[ind] = model->xn_index_vector[i];
+            copy_column(model->num_basic, i, ind, model->n_matrix, t_m);
+            #pragma omp critical
+            {
+                ind++;
+            }
+        } else if (model->xn_index_vector[i] <= model->num_non_basic - model->num_art + model->num_basic) {
+            printf("%d\n", ind);
+            model->cn_vector[ind] = 0;
+            t_v[ind] = model->xn_index_vector[i];
+            copy_column(model->num_basic, i, ind, model->n_matrix, t_m);
+            #pragma omp critical
+            {
+                ind++;
+            }
+        }
+    }
+    for (int i = 0; i < model->num_basic; i++) {
+        if (model->xb_index_vector[i] <= model->num_non_basic) {
+            model->cb_vector[i] = backup[model->xb_index_vector[i] - 1];
+        }
+    }
+    free(model->xn_index_vector);
+    model->xn_index_vector = t_v;
+    free_matrix(model->num_basic, model->n_matrix);
+    model->n_matrix = t_m;
+    model->num_non_basic -= model->num_art;
+    return 0;
 }
 
 int phase_one(Model* model) {
@@ -213,12 +251,13 @@ int phase_one(Model* model) {
         solve(model);
         return 0;
     }
+    // print_model(model);
     double* backup = malloc(sizeof(double) * model->num_non_basic);
     memcpy(backup, model->cn_vector, sizeof(double) * model->num_non_basic);
     free(model->cn_vector);
     model->cn_vector = calloc(model->num_non_basic + model->num_art, sizeof(double));
     model->xn_index_vector = realloc(model->xn_index_vector,
-                                     sizeof(double) * (model->num_non_basic +
+                                     sizeof(int) * (model->num_non_basic +
                                      model->num_art));
     matrix_realloc(model->num_basic, model->num_non_basic + model->num_art,
                    model->n_matrix);
@@ -226,44 +265,39 @@ int phase_one(Model* model) {
     for (int i = 0; i < model->num_basic; i++) {
         if (i == model->art_ind_vector[ind]) {
             model->cb_vector[i] = -1;
-            model->xb_index_vector[i] = model->num_non_basic + 
+            model->xb_index_vector[i] = model->num_non_basic +
                                         model->num_basic + ind + 1;
             model->xn_index_vector[ind + model->num_non_basic] = model->num_non_basic + i + 1;
-            model->n_matrix[model->art_ind_vector[ind]][ind + model->num_non_basic] = -model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]];
+            model->n_matrix[model->art_ind_vector[ind]][ind + model->num_non_basic] = model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]];
+            model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]] *= -1;
             if (!model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]]) {
                 model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]] = 1;
-            }
-            if (model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]] == 1) {
-                vector_add(model->num_non_basic + model->num_art,
-                           model->cn_vector,
-                           model->n_matrix[model->art_ind_vector[ind]],
-                           model->cn_vector);
-            } else {
-                vector_subtract(model->num_non_basic + model->num_art,
-                                model->cn_vector,
-                                model->n_matrix[model->art_ind_vector[ind]],
-                                model->cn_vector);
             }
             ind++;
         } else {
             model->cb_vector[i] = 0;
             model->xb_index_vector[i] = model->num_non_basic + i + 1;
-            vector_subtract(model->num_non_basic + model->num_art,
-                            model->cn_vector,
-                            model->n_matrix[model->art_ind_vector[ind]],
-                            model->cn_vector);
         }
     }
     model->num_non_basic += model->num_art;
     free(model->art_ind_vector);
     model->art_ind_vector = NULL;
+    print_model(model);
     solve(model);
+    // print_model(model);
+    print_sol(model);
     Solution* s = get_sol(model);
     if (s->stat == UBD || s->val) {
         model->stat = INF;
+        printf("%d %lf\n", s->stat == UBD, s->val);
+        free_Solution(s);
+        return 0;
     }
-    print_sol(model);
     free_Solution(s);
+    // print_model(model);
+    remove_art(model, backup);
+    // print_model(model);
+    solve(model);
     return 0;
 }
 
@@ -347,12 +381,11 @@ Solution* get_sol(Model* model) {
     s->num_var = model->num_non_basic;
     s->ind = malloc(sizeof(int) * s->num_var);
     s->sol = malloc(sizeof(double) * s->num_var);
-    double opt;
     double* xb = malloc(sizeof(double) * model->num_basic);
     double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
     matrix_invert(model->num_basic, model->b_matrix, b_inv);
     left_multiply(model->num_basic, model->num_basic, b_inv, model->b_vector, xb);
-    dot_product(model->num_basic, model->cb_vector, xb, &opt);
+    dot_product(model->num_basic, model->cb_vector, xb, &(s->val));
     for (int i = 0; i < model->num_basic; i++) {
         if (model->xb_index_vector[i] <= model->num_non_basic) {
             s->ind[i] = model->xb_index_vector[i];

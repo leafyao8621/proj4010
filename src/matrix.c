@@ -502,9 +502,7 @@ int copy_column(int nr, int acn, int bcn, double** a, double** b) {
     }
     #pragma omp parallel for
     for (int i = 0; i < nr; i++) {
-        int temp = a[i][acn];
-        a[i][acn] = b[i][bcn];
-        b[i][bcn] = temp;
+        b[i][bcn] = a[i][acn];
     }
     return 0;
 }
