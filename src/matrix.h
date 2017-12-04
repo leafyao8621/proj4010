@@ -1,6 +1,7 @@
 typedef struct Exc Exc;
 double* vector_alloc(int n);
 double** matrix_alloc(int nr, int nc);
+int matrix_realloc(int nr, int nc, double** a);
 int matrix_multiply(int nra, int nca, int ncb, double** a, double** b, double** output);
 int right_multiply(int da, int ncb, double* a, double** b, double* output);
 int left_multiply(int nra, int db, double** a, double* b, double* output);
@@ -20,8 +21,8 @@ int print_vector_int(int dim, int* vector);
 int print_matrix_int(int nr, int nc, int** matrix);
 int matrix_copy(int nr, int nc, double** from, double** to);
 int find_max(int dim, double* vector, int* max_ind, double* max);
-int find_next_max(int dim, double* vector, int* max_ind, double* max, int* exc);
 int extract_column(int nr, int cn, double** matrix, double* output);
+int copy_column(int nr, int acn, int bcn, double** a, double** b);
 double** create_identity(int dim);
 int dot_product(int dim, double* a, double* b, double* output);
 int find_first_pos(int dim, double* vector, int* ind);

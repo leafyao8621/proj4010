@@ -13,6 +13,14 @@
 #define UBD 3
 #define NL puts("");
 
+struct Solution {
+    int stat;
+    int num_var;
+    double val;
+    int* ind;
+    double* sol;
+};
+
 struct Model {
     int is_max;
     int stat;
@@ -26,7 +34,6 @@ struct Model {
     int* xb_index_vector;
     int* xn_index_vector;
     double* b_vector;
-    double** art_matrix;
     int* art_ind_vector;
 };
 
@@ -48,7 +55,6 @@ Model* new_Model(int is_max,
     opt->xn_index_vector = xn_index_vector;
     opt->xb_index_vector = xb_index_vector;
     opt->cb_vector = calloc(num_basic, sizeof(double));
-    opt->art_matrix = NULL;
     opt->b_vector = malloc(sizeof(double) * num_basic);
     return opt;
 }
@@ -80,74 +86,6 @@ int add_constraint(Model* model, int rn, double* row, int side, double val) {
     return 0;
 }
 
-int check(Model* model, int* in, int* out) {
-    if (model == NULL || in == NULL || out == NULL) {
-        return -1;
-    }
-    double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
-    if (matrix_invert(model->num_basic, model->b_matrix, b_inv) == -1) {
-        model->stat = INF;
-        
-        return 0;
-    }
-    double** temp = matrix_alloc(model->num_basic, model->num_non_basic);
-    matrix_multiply(model->num_basic, model->num_basic, model->num_non_basic, b_inv, model->n_matrix, temp);
-    free_matrix(model->num_basic, b_inv);
-    double* temp_v = malloc(sizeof(double) * model->num_non_basic);
-    right_multiply(model->num_basic, model->num_non_basic, model->cb_vector, temp, temp_v);
-    free_matrix(model->num_basic, temp);
-    vector_subtract(model->num_non_basic, model->cn_vector, temp_v, temp_v);
-    
-    double max;
-    find_max(model->num_non_basic, temp_v, in, &max);
-    // print_vector(model->num_non_basic, temp_v);
-    //printf("%lf\n", max);
-    if (max <= 0) {
-        // puts("x");
-        model->stat = OPT;
-        free(temp_v);
-        return 0;
-    }
-    find_first_pos(model->num_non_basic, temp_v, in);
-    int max_ind = *in;
-    // int cnt = 0;
-    // int* p_queue = malloc(sizeof(int) * model->num_non_basic);
-    while (*in != -1) {
-        int cond = ratio_check(model, *in, out);
-        // printf("%d %d\n", *in, *out);
-        // printf("%d\n", cond);
-        // printf("%d\n", cond);
-        if (!cond) {
-            model->stat = UBD;
-        } else {
-            if (temp_v[*in] > temp_v[max_ind]) {
-                max_ind = *in;
-            }
-            // p_queue[cnt] = *in;
-            // int i = cnt;
-            // if (!cnt) {
-            //     p_queue[0] = *in;
-            // } else {
-            //     while (i >= 0) {
-            //         if (temp_v[p_queue[i]] > temp_v[p_queue[i >> 1]]) {
-            //             int temp = temp_v[p_queue[i >> 1]];
-            //             temp_v[p_queue[i >> 1]] = temp_v[p_queue[i]];
-            //             temp_v[p_queue[i]] = temp;
-            //         } else {
-            //             break;
-            //         }
-            //     }
-            // }
-            // cnt++;
-        }
-        find_next_pos(model->num_non_basic, *in, temp_v, in);
-    }
-    *in = max_ind;
-    // free(p_queue);
-    free(temp_v);
-    return ratio_check(model, *in, out);
-}
-
 int ratio_check(Model* model, int in_ind, int* ind) {
     if (model == NULL || ind == NULL) {
         puts("ratio check NULL ptr");
@@ -176,13 +114,54 @@ int ratio_check(Model* model, int in_ind, int* ind) {
             *ind = i;
         }
     }
-    // print_vector(model->num_basic, temp1);
-    // print_vector(model->num_basic, temp);
     free(temp);
     free(temp1);
     free_matrix(model->num_basic, b_inv);
-    // printf("%lf\n", min);
     return min_set;
+}
+
+int check(Model* model, int* in, int* out) {
+    if (model == NULL || in == NULL || out == NULL) {
+        return -1;
+    }
+    double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
+    if (matrix_invert(model->num_basic, model->b_matrix, b_inv) == -1) {
+        model->stat = INF;
+        
+        return 0;
+    }
+    double** temp = matrix_alloc(model->num_basic, model->num_non_basic);
+    matrix_multiply(model->num_basic, model->num_basic, model->num_non_basic, b_inv, model->n_matrix, temp);
+    free_matrix(model->num_basic, b_inv);
+    double* temp_v = malloc(sizeof(double) * model->num_non_basic);
+    right_multiply(model->num_basic, model->num_non_basic, model->cb_vector, temp, temp_v);
+    free_matrix(model->num_basic, temp);
+    vector_subtract(model->num_non_basic, model->cn_vector, temp_v, temp_v);
+    
+    double max;
+    find_max(model->num_non_basic, temp_v, in, &max); 
+    if (max <= 0) {
+        model->stat = OPT;
+        free(temp_v);
+        return 0;
+    }
+    find_first_pos(model->num_non_basic, temp_v, in);
+    int max_ind = *in;
+    while (*in != -1) {
+        int cond = ratio_check(model, *in, out);
+        if (!cond) {
+            model->stat = UBD;
+        } else {
+            if (temp_v[*in] > temp_v[max_ind]) {
+                max_ind = *in;
+            }
+            
+        }
+        find_next_pos(model->num_non_basic, *in, temp_v, in);
+    }
+    *in = max_ind;
+    free(temp_v);
+    return ratio_check(model, *in, out);
 }
 
 int pivot(Model* model, int in, int out) {
@@ -210,24 +189,81 @@ int solve(Model* model) {
         int in, out;
         cond = check(model, &in, &out);
         if (cond) {
-            // printf("%d %d\n", in, out);
             pivot(model, in, out);
         }
-        // print_model(model);
     }
     return 0;
 }
 
-int phase_one(Model* model, int* cond) {
+int remove_art(Model* model, double* backup) {
+    // model->num_non_basic -= model->num_art;
+    
+    int ind = 0;
+    for (int i = 0; i < model->num_non_basic; i++) {
+
+    }
+}
+
+int phase_one(Model* model) {
     if (model == NULL) {
         puts("phase one NULL ptr");
         return 1;
     }
     if (!model->num_art) {
-        *cond = 1;
+        solve(model);
         return 0;
     }
-
+    double* backup = malloc(sizeof(double) * model->num_non_basic);
+    memcpy(backup, model->cn_vector, sizeof(double) * model->num_non_basic);
+    free(model->cn_vector);
+    model->cn_vector = calloc(model->num_non_basic + model->num_art, sizeof(double));
+    model->xn_index_vector = realloc(model->xn_index_vector,
+                                     sizeof(double) * (model->num_non_basic +
+                                     model->num_art));
+    matrix_realloc(model->num_basic, model->num_non_basic + model->num_art,
+                   model->n_matrix);
+    int ind = 0;
+    for (int i = 0; i < model->num_basic; i++) {
+        if (i == model->art_ind_vector[ind]) {
+            model->cb_vector[i] = -1;
+            model->xb_index_vector[i] = model->num_non_basic + 
+                                        model->num_basic + ind + 1;
+            model->xn_index_vector[ind + model->num_non_basic] = model->num_non_basic + i + 1;
+            model->n_matrix[model->art_ind_vector[ind]][ind + model->num_non_basic] = -model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]];
+            if (!model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]]) {
+                model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]] = 1;
+            }
+            if (model->b_matrix[model->art_ind_vector[ind]][model->art_ind_vector[ind]] == 1) {
+                vector_add(model->num_non_basic + model->num_art,
+                           model->cn_vector,
+                           model->n_matrix[model->art_ind_vector[ind]],
+                           model->cn_vector);
+            } else {
+                vector_subtract(model->num_non_basic + model->num_art,
+                                model->cn_vector,
+                                model->n_matrix[model->art_ind_vector[ind]],
+                                model->cn_vector);
+            }
+            ind++;
+        } else {
+            model->cb_vector[i] = 0;
+            model->xb_index_vector[i] = model->num_non_basic + i + 1;
+            vector_subtract(model->num_non_basic + model->num_art,
+                            model->cn_vector,
+                            model->n_matrix[model->art_ind_vector[ind]],
+                            model->cn_vector);
+        }
+    }
+    model->num_non_basic += model->num_art;
+    free(model->art_ind_vector);
+    model->art_ind_vector = NULL;
+    solve(model);
+    Solution* s = get_sol(model);
+    if (s->stat == UBD || s->val) {
+        model->stat = INF;
+    }
+    print_sol(model);
+    free_Solution(s);
     return 0;
 }
 
@@ -301,17 +337,63 @@ int print_sol(Model* model) {
     return 0;
 }
 
-int get_opt(Model* model, double* opt) {
-    if (model == NULL || opt == NULL) {
+Solution* get_sol(Model* model) {
+    if (model == NULL) {
         puts("get opt NULL ptr");
-        return 1;
+        return NULL;
     }
+    Solution* s = malloc(sizeof(Solution));
+    s->stat = model->stat;
+    s->num_var = model->num_non_basic;
+    s->ind = malloc(sizeof(int) * s->num_var);
+    s->sol = malloc(sizeof(double) * s->num_var);
+    double opt;
     double* xb = malloc(sizeof(double) * model->num_basic);
     double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
     matrix_invert(model->num_basic, model->b_matrix, b_inv);
     left_multiply(model->num_basic, model->num_basic, b_inv, model->b_vector, xb);
-    dot_product(model->num_basic, model->cb_vector, xb, opt);
+    dot_product(model->num_basic, model->cb_vector, xb, &opt);
+    for (int i = 0; i < model->num_basic; i++) {
+        if (model->xb_index_vector[i] <= model->num_non_basic) {
+            s->ind[i] = model->xb_index_vector[i];
+            s->sol[i] = xb[i];
+        }
+    }
+    for (int i = 0; i < model->num_non_basic; i++) {
+        if (model->xn_index_vector[i] <= model->num_non_basic) {
+            s->ind[i] = model->xn_index_vector[i];
+            s->sol[i] = 0.0;
+        }
+    }
     free(xb);
     free_matrix(model->num_basic, b_inv);
+    return s;
+}
+
+int free_Solution(Solution* s) {
+    if (s == NULL) {
+        puts("free solution NULL ptr");
+        return 1;
+    }
+    free(s->ind);
+    free(s->sol);
+    free(s);
+    return 0;
+}
+
+int free_Model(Model* model) {
+    if (model == NULL) {
+        puts("free model NULL ptr");
+        return 1;
+    }
+    free(model->cb_vector);
+    free(model->cn_vector);
+    free(model->b_vector);
+    free(model->xb_index_vector);
+    free(model->xn_index_vector);
+    free(model->art_ind_vector);
+    free_matrix(model->num_basic, model->b_matrix);
+    free_matrix(model->num_basic, model->n_matrix);
+    free(model);
     return 0;
 }

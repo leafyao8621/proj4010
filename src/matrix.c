@@ -348,7 +348,7 @@ int matrix_invert(int dim, double** a, double** output) {
         if (output[i][i] == 0) {
             int j;
             for (j = i; j < dim && output[j][i] == 0; j++);
-            if (output[j][i] == 0) {
+            if (j == dim) {
                 return -1;
             }
             swap_row(i, j, output, output);
@@ -478,6 +478,33 @@ int find_next_pos(int dim, int start, double* vector, int* ind) {
             *ind = i;
             return 0;
         }
+    }
+    return 0;
+}
+
+int matrix_realloc(int nr, int nc, double** a) {
+    if (a == NULL) {
+        puts("matrix realloc NULL ptr");
+        fflush(stdout);
+        return 1;
+    }
+    #pragma omp parallel for
+    for (int i = 0; i < nr; i++) {
+        a[i] = realloc(a[i], sizeof(double) * nc);
+    }
+    return 0;
+}
+
+int copy_column(int nr, int acn, int bcn, double** a, double** b) {
+    if (a == NULL || b == NULL) {
+        puts("copy column NULL ptr");
+        return 1;
+    }
+    #pragma omp parallel for
+    for (int i = 0; i < nr; i++) {
+        int temp = a[i][acn];
+        a[i][acn] = b[i][bcn];
+        b[i][bcn] = temp;
     }
     return 0;
 }

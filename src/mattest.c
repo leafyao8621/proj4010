@@ -25,11 +25,14 @@ int main() {
     double bv[] = {3, 1, 5, 4, 9};
     double* out = malloc(sizeof(double) * 5);
     double** c = matrix_alloc(5, 5);
-    print_matrix(5, 5, a);
+    // print_matrix(5, 5, a);
     NL
     matrix_multiply(5, 5, 5, a, b, c);
-    print_matrix(5, 5, b);
+    // print_matrix(5, 5, b);
     NL
     print_matrix(5, 5, c);
+    NL
+    matrix_realloc(5, 10, c);
+    print_matrix(5, 10, c);
     return 0;
 }

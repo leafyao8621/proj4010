@@ -1,4 +1,6 @@
 typedef struct Model Model;
+typedef struct Solution Solution;
+
 Model* new_Model(int is_max,
                  int num_non_basic,
                  int num_basic,
@@ -6,10 +8,9 @@ Model* new_Model(int is_max,
                  int* xn_index_vector,
                  int* xb_index_vector);
 int add_constraint(Model* model, int rn, double* row, int side, double val);
-int pivot(Model* model, int in, int out);
-int check(Model* model, int* in, int* out);
-int ratio_check(Model* model, int in_ind, int* ind);
-int solve(Model* model);
 int print_model(Model* model);
 int print_sol(Model* model);
-int phase_one(Model* model, int* cond);
+int phase_one(Model* model);
+int free_Model(Model* model);
+int free_Solution(Solution* s);
+Solution* get_sol(Model* model);
