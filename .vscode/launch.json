@@ -7,7 +7,7 @@
                 "type": "cppdbg",
                 "request": "launch",
                 "program": "dbg",
-                "args": [],
+                "args": ["inp/inp3.txt"],
                 "stopAtEntry": false,
                 "cwd": "${workspaceRoot}",
                 "environment": [],

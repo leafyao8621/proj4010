@@ -125,11 +125,6 @@ int check(Model* model, int* in, int* out) {
         return -1;
     }
     double** b_inv = matrix_alloc(model->num_basic, model->num_basic);
-    if (matrix_invert(model->num_basic, model->b_matrix, b_inv) == -1) {
-        model->stat = INF;
-        
-        return 0;
-    }
     double** temp = matrix_alloc(model->num_basic, model->num_non_basic);
     matrix_multiply(model->num_basic, model->num_basic, model->num_non_basic, b_inv, model->n_matrix, temp);
     free_matrix(model->num_basic, b_inv);
@@ -207,26 +202,15 @@ int remove_art(Model* model, double* backup) {
     int* t_v = malloc(sizeof(double) * (model->num_non_basic - model->num_art));
     double** t_m = matrix_alloc(model->num_basic, model->num_non_basic - model->num_art);
     int ind = 0;
-    #pragma omp parallel for
     for (int i = 0; i < model->num_non_basic; i++) {
         if (model->xn_index_vector[i] <= model->num_non_basic) {
-            printf("%d\n", ind);
             model->cn_vector[ind] = backup[model->xn_index_vector[i] - 1];
             t_v[ind] = model->xn_index_vector[i];
-            copy_column(model->num_basic, i, ind, model->n_matrix, t_m);
-            #pragma omp critical
-            {
-                ind++;
-            }
+            copy_column(model->num_basic, i, ind++, model->n_matrix, t_m);            
         } else if (model->xn_index_vector[i] <= model->num_non_basic - model->num_art + model->num_basic) {
-            printf("%d\n", ind);
             model->cn_vector[ind] = 0;
             t_v[ind] = model->xn_index_vector[i];
             copy_column(model->num_basic, i, ind, model->n_matrix, t_m);
-            #pragma omp critical
-            {
-                ind++;
-            }
         }
     }
     for (int i = 0; i < model->num_basic; i++) {
@@ -287,17 +271,20 @@ int phase_one(Model* model) {
     // print_model(model);
     print_sol(model);
     Solution* s = get_sol(model);
-    if (s->stat == UBD || s->val) {
+    // printf("%d\n", s->stat == UBD || s->val != 0);
+    if (s->stat == UBD || s->val != 0) {
         model->stat = INF;
-        printf("%d %lf\n", s->stat == UBD, s->val);
+        // printf("%d %lf\n", s->stat == UBD, s->val);
         free_Solution(s);
         return 0;
     }
-    free_Solution(s);
+    // puts("phase2");
+    
     // print_model(model);
     remove_art(model, backup);
     // print_model(model);
     solve(model);
+    free_Solution(s);
     return 0;
 }
 
